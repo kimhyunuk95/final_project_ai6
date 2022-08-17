@@ -219,7 +219,7 @@ def main():
             folium.Marker(
                 [a['위도'][i], a['경도'][i]],
                 popup = a['거리'][i],
-#                 tooltip = percentage[keys[i]]['pp']
+                tooltip = str(percentage[keys[i]]['pp'])
             ).add_to(m)
     with tab2:
         pass
