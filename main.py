@@ -214,7 +214,7 @@ def main():
         a = a.reset_index(drop=True)
         percentage = []
         percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
-        keys = percentage.keys()
+        keys = list(percentage.keys())
         for i in range(0, 5):
             folium.Marker(
                 [a['위도'][i], a['경도'][i]],
