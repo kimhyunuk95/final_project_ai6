@@ -210,7 +210,7 @@ origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCA
 def main():
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     with tab1:
-        m = folium.Map(location=[35, 127], zoom_start=14)
+        m = folium.Map(location=[origin_lat, origin_lng], zoom_start=16)
         a = get_near_placesummary(df)
         a = a.reset_index(drop=True)
         
