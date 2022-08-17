@@ -19,7 +19,8 @@ from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 from haversine import haversine
 from bs4 import BeautifulSoup
-
+import folium
+from streamlit_folium import st_folium
 
 
 MAX_LEN = 30
@@ -203,37 +204,17 @@ def get_comments_5_place(df, display=300, page=1):
     
     return comments_dict
 
-
-#def blah():
-#    origin_df = pd.read_csv('data/origin.csv')
-#    summary_df = pd.read_csv('data/df_placesummary.csv')
-#    df = pd.concat([origin_df, summary_df], axis=1)
-#    return df
-    
-
-
-
-
     
 st.write(blah(get_comments_5_place(get_near_placesummary(df))))
+  
     
-    
-    
-#st.write(get_comments_nearest_5_place(get_near_placesummary(df)))
-
-#st.write(is_positive_sentences(get_comments("35395420", 300, 1)))
-
-
-
-
-
-
-
-
-
-
-
-for x, y in zip(df['위도'], df['경도']):
-    dis=distance(result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon'],x ,y)
-    if dis<400000:
+def main():
+    with tab1:
         pass
+    with tab2:
+        pass
+    with tab3:
+        pass
+    
+    
+tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
