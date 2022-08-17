@@ -230,7 +230,7 @@ def main():
             ).add_to(m)
         st_data = st_folium(m, width=725)
     with tab2:
-        st.write(a[['상호지점명', '거리', 'reviewScore']])
+        st.write(a[['상호지점명', '거리', 'visitorReviewScore']])
        
     with tab3:
         percentage_df = pd.DataFrame.from_dict(percentage)
