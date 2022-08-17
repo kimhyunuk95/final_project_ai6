@@ -204,8 +204,7 @@ def get_comments_5_place(df, display=300, page=1):
     
     return comments_dict
 
-    
-st.write(get_divided_comments((get_comments_5_place(get_near_placesummary(df)))))
+
   
     
 def main():
@@ -224,7 +223,8 @@ def main():
     with tab2:
         pass
     with tab3:
-        pass
+        st.write(get_divided_comments((get_comments_5_place(get_near_placesummary(df)))))
     
     
 tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
+main()
