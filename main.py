@@ -216,16 +216,21 @@ def main():
         
         keys = list(percentage.keys())
         for i in range(0, 5):
-            st.write(type(origin_lat), type(origin_lng), type(a['위도'][i]),type(a['경도'][i]), origin_lat+a['위도'][i] )
             folium.Marker(
                 [a['위도'][i], a['경도'][i]],
                 popup = a['거리'][i],
                 tooltip = str(percentage[keys[i]]['pp'])
             ).add_to(m)
+        folium.Marker(
+                [origin_lat, origin_lng],
+                tooltip = '현재위치',
+                icon = folium.Icon(
+                    color = 'red'
+                )
+            ).add_to(m)
         st_data = st_folium(m, width=725)
-
     with tab2:
-        pass
+        st.write(a[['상호지점명', '거리']])
     with tab3:
         st.write(percentage)
     
