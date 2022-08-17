@@ -206,7 +206,7 @@ def get_comments_5_place(df, display=300, page=1):
 ###
 def render_comments_at_review_tab():
     placesummary5 = get_near_placesummary(df)
-    temp_dict = blah(get_comments_5_place(placesummary5))
+    temp_dict = get_divided_comments(get_comments_5_place(placesummary5))
 
     for id in temp_dict:
         with st.expander(f'{placesummary5.loc[placesummary5["id"]==id, "상호지점명"].values[0]} 긍정 댓글 백분율 : {temp_dict[id]["pp"]}'):
