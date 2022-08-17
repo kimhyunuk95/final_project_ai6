@@ -208,12 +208,12 @@ def get_comments_5_place(df, display=300, page=1):
   
 origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
 def main():
+    percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     with tab1:
-        m = folium.Map(location=[origin_lat, origin_lng], zoom_start=14)
+        m = folium.Map(location=[35, 127], zoom_start=14)
         a = get_near_placesummary(df)
         a = a.reset_index(drop=True)
-        percentage = []
-        percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
+        
         keys = list(percentage.keys())
         for i in range(0, 5):
             folium.Marker(
@@ -224,7 +224,7 @@ def main():
     with tab2:
         pass
     with tab3:
-        st.write(get_divided_comments((get_comments_5_place(get_near_placesummary(df)))))
+        st.write(percentage)
     
     
 tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
