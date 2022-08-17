@@ -206,7 +206,7 @@ def get_comments_5_place(df, display=300, page=1):
 
 
   
-    
+origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
 def main():
     with tab1:
         m = folium.Map(location=[origin_lat, origin_lng], zoom_start=14)
