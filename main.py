@@ -232,6 +232,7 @@ def main():
     with tab2:
         st.write(a[['상호지점명', '거리']])
     with tab3:
+        percentage = pd.dataframe(percentage)
         st.write(percentage)
     
     
