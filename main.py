@@ -83,7 +83,7 @@ def is_positive_sentences(sentences):
     
     return 1==score
     
-def blah(place_dict):
+def get_divided_comments(place_dict):
     #1. 현재 위치 -> 가장 가까운 5개의 업체 id
     #            -> id로 댓글 목록
     #2. 댓글 목록 -> 댓글의 긍, 부정을 알려주는 nparray
@@ -205,12 +205,22 @@ def get_comments_5_place(df, display=300, page=1):
     return comments_dict
 
     
-st.write(blah(get_comments_5_place(get_near_placesummary(df))))
+st.write(get_divided_comments((get_comments_5_place(get_near_placesummary(df)))))
   
     
 def main():
     with tab1:
-        pass
+        m = folium.Map(location=[origin_lat, origin_lng], zoom_start=14)
+        a = get_near_placesummary(df)
+        percentage = []
+        percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
+        keys = percentage.keys()
+        for i in range(0, 5):
+            folium.Marker(
+                [a['위도'][i], a['경도'][i]],
+                popup = a['거리'][i],
+                tooltip = percentage[keys[i]]['pp']
+            ).add_to(m)
     with tab2:
         pass
     with tab3:
