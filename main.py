@@ -26,7 +26,7 @@ from streamlit_folium import st_folium
 MAX_LEN = 30
 model_path = 'model/food_review.h5'
 model = load_model(model_path)
-df = pd.read_csv('data/last_df.csv')
+df = pd.read_csv('data/last_df_1.csv')
 with open('model/tokenizer.json') as f:
     data = json.load(f)
     tokenizer = tokenizer_from_json(data)
@@ -203,8 +203,22 @@ def get_comments_5_place(df, display=300, page=1):
         
     
     return comments_dict
+###
+def render_comments_at_review_tab():
+    placesummary5 = get_near_placesummary(df)
+    temp_dict = blah(get_comments_5_place(placesummary5))
 
-
+    for id in temp_dict:
+        with st.expander(f'{placesummary5.loc[placesummary5["id"]==id, "상호지점명"].values[0]} 긍정 댓글 백분율 : {temp_dict[id]["pp"]}'):
+            st.markdown("## 긍정")
+            with st.container():
+                for pc in temp_dict[id]["pc"]:
+                    st.markdown(f'* {pc}')
+            st.markdown("## 부정")
+            with st.container():
+                for nc in temp_dict[id]["nc"]:
+                    st.markdown(f'* {nc}')
+###                    
   
 origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
 percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
@@ -233,8 +247,7 @@ def main():
         st.write(a[['상호지점명', '거리', 'visitorReviewScore']])
        
     with tab3:
-        percentage_df = pd.DataFrame.from_dict(percentage)
-        st.write(percentage_df)
+        render_comments_at_review_tab()
     
     
 tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
