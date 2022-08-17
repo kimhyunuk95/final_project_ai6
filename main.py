@@ -93,9 +93,7 @@ def blah(place_dict):
     
     mask = is_positive_sentences(test_case)
     test_case = test_case.reshape(-1, 1)
-    st.write(test_case[mask])
     #mask = np.array(is_positive_sentences(test_case))
-    #st.write(np.array(test_case)[mask])
     result_dict = {}
     for id in place_dict:
         temp_dict = {"pc":[], "nc":[], "pp":-2}
@@ -108,7 +106,7 @@ def blah(place_dict):
             temp_dict["nc"] = neg_comments
             temp_dict["pp"] = round((len(pos_comments)/len(place_dict[id]) * 100), 2)
         result_dict[id] = temp_dict
-    st.write(result_dict)
+    return result_dict
         
         
         
@@ -213,15 +211,8 @@ def get_comments_5_place(df, display=300, page=1):
 #    return df
     
 
-test_text = st.text_input('긍정/부정 문장 판독', '이거 ')
-
-st.write("hello")
 
 
-btn_clicked = st.button('결과 보기')
-if btn_clicked:
-  st.write(is_positive_sentence(test_text))
-  st.write(test_text)
 
     
 st.write(blah(get_comments_5_place(get_near_placesummary(df))))
@@ -234,14 +225,6 @@ st.write(blah(get_comments_5_place(get_near_placesummary(df))))
 
 
 
-
-if result:
-    if "GET_LOCATION" in result:
-        st.write(result.get("GET_LOCATION"))
-        
-
-dis=distance(result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon'], 37.563953,127.007410)    
-st.write(dis)
 
 
 
