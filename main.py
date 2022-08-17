@@ -210,12 +210,13 @@ origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCA
 def main():
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     with tab1:
-        m = folium.Map(location=[origin_lat, origin_lng], zoom_start=16)
+        m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
         a = get_near_placesummary(df)
         a = a.reset_index(drop=True)
         
         keys = list(percentage.keys())
-#         for i in range(0, 5):
+        for i in range(0, 5):
+            st.write(origin_lat, origin_lng, a['위도'][i],a['경도'][i] )
 #             folium.Marker(
 #                 [a['위도'][i], a['경도'][i]],
 #                 popup = a['거리'][i],
