@@ -215,12 +215,12 @@ def main():
         a = a.reset_index(drop=True)
         
         keys = list(percentage.keys())
-        for i in range(0, 5):
-            folium.Marker(
-                [a['위도'][i], a['경도'][i]],
-                popup = a['거리'][i],
-                tooltip = str(percentage[keys[i]]['pp'])
-            ).add_to(m)
+#         for i in range(0, 5):
+#             folium.Marker(
+#                 [a['위도'][i], a['경도'][i]],
+#                 popup = a['거리'][i],
+#                 tooltip = str(percentage[keys[i]]['pp'])
+#             ).add_to(m)
     with tab2:
         pass
     with tab3:
