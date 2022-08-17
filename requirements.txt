@@ -18,4 +18,6 @@ jvm
 PyPI
 streamlit-bokeh-events
 haversine
+folium
+streamlit-folium
 #####
