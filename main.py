@@ -218,8 +218,8 @@ def main():
         for i in range(0, 5):
             folium.Marker(
                 [a['위도'][i], a['경도'][i]],
-                popup = a['거리'][i],
-                tooltip = str(percentage[keys[i]]['pp'])
+                tooltip = a['상호지점명'][i],
+                popup = str(percentage[keys[i]]['pp'])
             ).add_to(m)
         folium.Marker(
                 [origin_lat, origin_lng],
