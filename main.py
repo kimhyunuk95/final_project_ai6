@@ -232,7 +232,7 @@ def main():
     with tab2:
         st.write(a[['상호지점명', '거리']])
     with tab3:
-        percentage_df = pd.DataFrame(percentage)
+        percentage_df = pd.DataFrame.from_dict(percentage)
         st.write(percentage_df)
     
     
