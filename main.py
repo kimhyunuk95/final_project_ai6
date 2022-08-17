@@ -216,7 +216,7 @@ def main():
         
         keys = list(percentage.keys())
         for i in range(0, 5):
-            st.write(type(origin_lat), type(origin_lng), type(a['위도'][i]),type(a['경도'][i]), origin_lat+a['위도'][ )
+            st.write(type(origin_lat), type(origin_lng), type(a['위도'][i]),type(a['경도'][i]), origin_lat+a['위도'][i] )
 #             folium.Marker(
 #                 [a['위도'][i], a['경도'][i]],
 #                 popup = a['거리'][i],
