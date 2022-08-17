@@ -207,8 +207,8 @@ def get_comments_5_place(df, display=300, page=1):
 
   
 origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
+percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
 def main():
-    percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     with tab1:
         m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
         a = get_near_placesummary(df)
