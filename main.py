@@ -105,7 +105,7 @@ def get_divided_comments(place_dict):
             neg_comments = comments[~mask]
             temp_dict["pc"] = pos_comments
             temp_dict["nc"] = neg_comments
-#             temp_dict["pp"] = round((len(pos_comments)/len(place_dict[id]) * 100), 2)
+            temp_dict["pp"] = round((len(pos_comments)/len(place_dict[id]) * 100), 2)
         result_dict[id] = temp_dict
     return result_dict
         
@@ -230,10 +230,10 @@ def main():
             ).add_to(m)
         st_data = st_folium(m, width=725)
     with tab2:
-        st.write(a[['상호지점명', '거리']])
+        st.write(a[['상호지점명', '거리', 'reviewScore']])
+       
     with tab3:
         percentage_df = pd.DataFrame.from_dict(percentage)
-        print(percentage_df)
         st.write(percentage_df)
     
     
