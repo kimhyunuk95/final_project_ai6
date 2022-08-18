@@ -1,1 +1,2 @@
-# final_project_ai6
+# 쉬시조
+### likelion ai school 6기 final project
