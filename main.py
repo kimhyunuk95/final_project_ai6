@@ -222,6 +222,7 @@ def render_comments_at_review_tab():
 try: 
     origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
+    @st.cache
     def main():
         with tab1:
             m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
