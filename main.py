@@ -51,7 +51,7 @@ result = streamlit_bokeh_events(
     debounce_time=0)
 
 
-@st.experimental_singleton
+
 def is_positive_sentence(new_sentence):
     new_sentence = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', new_sentence)
     new_sentence = okt.morphs(new_sentence, stem=True) # 토큰화
@@ -66,6 +66,7 @@ def is_positive_sentence(new_sentence):
     else:
         return False
 
+@st.experimental_singleton
 def is_positive_sentences(sentences):
     #test case: ["맛있다", "여기 괜찮네요", "이건 어때요"]
     
