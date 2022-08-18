@@ -252,5 +252,5 @@ try:
     
     tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
     main()
-except():
+except(AttributeError, NameError):
     st.write('Please Click Get Location Button')
