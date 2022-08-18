@@ -203,7 +203,7 @@ def get_comments_5_place(df, display=300, page=1):
         
     
     return comments_dict
-###
+
 def render_comments_at_review_tab():
     placesummary5 = get_near_placesummary(df)
     temp_dict = get_divided_comments(get_comments_5_place(placesummary5))
@@ -218,37 +218,38 @@ def render_comments_at_review_tab():
             with st.container():
                 for nc in temp_dict[id]["nc"]:
                     st.markdown(f'* {nc}')
-###                    
-  
-origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
-percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
-def main():
-    with tab1:
-        m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
-        a = get_near_placesummary(df)
-        a = a.reset_index(drop=True)
-        
-        keys = list(percentage.keys())
-        for i in range(0, 5):
+                  
+try: 
+    origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
+    percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
+    def main():
+        with tab1:
+            m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
+            a = get_near_placesummary(df)
+            a = a.reset_index(drop=True)
+
+            keys = list(percentage.keys())
+            for i in range(0, 5):
+                folium.Marker(
+                    [a['위도'][i], a['경도'][i]],
+                    tooltip = a['상호지점명'][i],
+                    popup = str(percentage[keys[i]]['pp'])
+                ).add_to(m)
             folium.Marker(
-                [a['위도'][i], a['경도'][i]],
-                tooltip = a['상호지점명'][i],
-                popup = str(percentage[keys[i]]['pp'])
-            ).add_to(m)
-        folium.Marker(
-                [origin_lat, origin_lng],
-                tooltip = '현재위치',
-                icon = folium.Icon(
-                    color = 'red'
-                )
-            ).add_to(m)
-        st_data = st_folium(m, width=725)
-    with tab2:
-        st.write(a[['상호지점명', '거리', 'visitorReviewScore']])
-       
-    with tab3:
-        render_comments_at_review_tab()
-    
+                    [origin_lat, origin_lng],
+                    tooltip = '현재위치',
+                    icon = folium.Icon(
+                        color = 'red'
+                    )
+                ).add_to(m)
+            st_data = st_folium(m, width=725)
+        with tab2:
+            st.write(a[['상호지점명', '거리', 'visitorReviewScore']])
+
+        with tab3:
+            render_comments_at_review_tab()
+except(AttributeError):
+    st.exception('Please Click Get Location Button')
     
 tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
 main()
