@@ -66,7 +66,7 @@ def is_positive_sentence(new_sentence):
     else:
         return False
 
-@st.experimental_singleton
+@st.cache
 def is_positive_sentences(sentences):
     #test case: ["맛있다", "여기 괜찮네요", "이건 어때요"]
     
