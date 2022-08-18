@@ -224,7 +224,7 @@ try:
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     def main():
         with tab1:
-            m = folium.Map(location=[origin_lat,origin_lng], zoom_start=16)
+            m = folium.Map(location=[origin_lat,origin_lng], zoom_start=20)
             a = get_near_placesummary(df)
             a = a.reset_index(drop=True)
 
