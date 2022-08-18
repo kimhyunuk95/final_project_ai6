@@ -223,7 +223,7 @@ try:
     origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
     def main():
-        with tab1:
+        with tab2:
             m = folium.Map(location=[origin_lat,origin_lng], zoom_start=20)
             a = get_near_placesummary(df)
             a = a.reset_index(drop=True)
@@ -243,7 +243,7 @@ try:
                     )
                 ).add_to(m)
             st_data = st_folium(m, width=725)
-        with tab2:
+        with tab1:
             st.write(a[['상호지점명', '거리', 'visitorReviewScore']])
 
         with tab3:
