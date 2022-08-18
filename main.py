@@ -250,7 +250,7 @@ try:
             render_comments_at_review_tab()
 
     
-    tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
+    tab2, tab1, tab3 = st.tabs(['Map','distance','Review'])
     main()
 except(AttributeError, NameError):
     st.write('Please Click Get Location Button')
