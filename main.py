@@ -210,14 +210,14 @@ def render_comments_at_review_tab():
 
     for id in temp_dict:
         with st.expander(f'{placesummary5.loc[placesummary5["id"]==id, "상호지점명"].values[0]} 긍정 댓글 백분율 : {temp_dict[id]["pp"]}'):
-            if st.checkbox(' 긍정적인 리뷰'):
-                with st.container():
-                    for pc in temp_dict[id]["pc"]:
-                        st.markdown(f'* {pc}')
-            if st.checkbox("부정적인 리뷰"):
-                with st.container():
-                    for nc in temp_dict[id]["nc"]:
-                        st.markdown(f'* {nc}')
+            st.markdown('## 긍정적인 리뷰')
+            with st.container():
+                for pc in temp_dict[id]["pc"]:
+                    st.markdown(f'* {pc}')
+            st.markdown("## 부정적인 리뷰")
+            with st.container():
+                for nc in temp_dict[id]["nc"]:
+                    st.markdown(f'* {nc}')
 
 try: 
     origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
