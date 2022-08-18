@@ -130,7 +130,7 @@ def distance(origin_lat, origin_lng, destination_lat, destination_lng):
     origin = (origin_lat, origin_lng)
     destination = (destination_lat,destination_lng)
     return haversine(origin, destination, unit = 'm')    
-@st.cache    
+    
 def make_payload(business_id, display=10, page=1):
     """
         업체 리뷰조회를 위해서 POST 요청시 함께 보낼 payload를 만들어 줌
@@ -164,7 +164,7 @@ def make_payload(business_id, display=10, page=1):
     return {"operationName": operationName, 
             "query": query,
             "variables": variables}
-    
+@st.cache
 def get_comments(business_id, display=10, page=1):
     """
         업체 리뷰를 가져오는 함수
@@ -222,10 +222,12 @@ def render_comments_at_review_tab():
 try: 
     origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
     percentage = get_divided_comments((get_comments_5_place(get_near_placesummary(df))))
+    
+    a = get_near_placesummary(df)
+    a = a.reset_index(drop=True)
+    m = folium.Map(location=[origin_lat,origin_lng], zoom_start=18)
+    
     def main(): 
-        a = get_near_placesummary(df)
-        a = a.reset_index(drop=True)
-        m = folium.Map(location=[origin_lat,origin_lng], zoom_start=18)
         with tab1:
             keys = list(percentage.keys())
             for i in range(0, 5):
