@@ -249,7 +249,7 @@ try:
         with tab3:
             render_comments_at_review_tab()
 except(AttributeError):
-    st.exception('Please Click Get Location Button')
+    st.write('Please Click Get Location Button')
     
 tab1, tab2, tab3 = st.tabs(['Map','distance','Review'])
 main()
