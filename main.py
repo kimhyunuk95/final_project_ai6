@@ -22,7 +22,6 @@ from bs4 import BeautifulSoup
 import folium
 from streamlit_folium import st_folium
 
-
 MAX_LEN = 30
 model_path = 'model/food_review.h5'
 model = load_model(model_path)
@@ -52,7 +51,7 @@ result = streamlit_bokeh_events(
     debounce_time=0)
 
 
-
+@st.experimental_singleton
 def is_positive_sentence(new_sentence):
     new_sentence = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', new_sentence)
     new_sentence = okt.morphs(new_sentence, stem=True) # 토큰화
