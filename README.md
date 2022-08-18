@@ -6,4 +6,4 @@
 * 박고은  
 * 조현정   
 
-[배포(스트림릿)](https://kimhyunuk95-final-project-ai6-main-jqk22y.streamlitapp.com/)
+[배포(streamlit)](https://kimhyunuk95-final-project-ai6-main-jqk22y.streamlitapp.com/)
