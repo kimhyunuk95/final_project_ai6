@@ -214,10 +214,10 @@ def render_comments_at_review_tab():
                 with st.container():
                     for pc in temp_dict[id]["pc"]:
                         st.markdown(f'* {pc}')
-            st.markdown("## 부정적인 리뷰")
-            with st.container():
-                for nc in temp_dict[id]["nc"]:
-                    st.markdown(f'* {nc}')
+            if st.checkbox("부정적인 리뷰"):
+                with st.container():
+                    for nc in temp_dict[id]["nc"]:
+                        st.markdown(f'* {nc}')
 
 try: 
     origin_lat, origin_lng = result.get("GET_LOCATION")['lat'], result.get("GET_LOCATION")['lon']
